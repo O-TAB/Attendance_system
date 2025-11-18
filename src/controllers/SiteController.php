@@ -36,7 +36,7 @@ class SiteController extends Controller{
             'ocorrencias' => $aulas_turmas_ragistradas
         ];
         
-        return $this->renderview('today_class', 'basic', $params);
+        return $this->renderview('today_class', 'AdmPainel', $params);
     }
 
     public function teste(){
