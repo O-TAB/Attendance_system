@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /projetos/Attendance_system/public
+RewriteBase /projetos/Attendance_system_rework/public
 
 # Se o arquivo ou diretório não existir,
 # redireciona tudo para index.php
