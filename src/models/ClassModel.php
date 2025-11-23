@@ -14,6 +14,4 @@ class ClassModel extends Model {
     public string $data_;
 
 
-
-
 }
