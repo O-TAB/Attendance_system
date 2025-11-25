@@ -3,10 +3,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-use Core\Application;
-
-$currentPath = Application::$app->request->getpath();
-$path = Application::$_CONFIGS['MAIN_ROOT'];
 
 ?>
 <!doctype html>
@@ -79,12 +75,12 @@ $path = Application::$_CONFIGS['MAIN_ROOT'];
 
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-small">
-                    <li class="nav-item"><a class="nav-link <?= ($currentPath === '/' || $currentPath === '/home') ? 'active' : '' ?>" href="<?= $path?>/home"><i class="bi bi-house-door-fill me-1"></i>Início</a></li>
-                    <li class="nav-item"><a class="nav-link <?= strpos($currentPath, '/cadastro') === 0 ? 'active' : '' ?>"            href="<?= $path?>/cadastro"><i class="bi bi-person-plus me-1"></i>Cadastro</a></li>
-                    <li class="nav-item"><a class="nav-link <?= strpos($currentPath, '/alunos') === 0 ? 'active' : '' ?>"              href="<?= $path?>/alunos"><i class="bi bi-people-fill me-1"></i>Alunos</a></li>
-                    <li class="nav-item"><a class="nav-link <?= strpos($currentPath, '/justificativas') === 0 ? 'active' : '' ?>"      href="<?= $path?>/justificativas"><i class="bi bi-check2-square me-1"></i>Justificativas</a></li>
-                    <li class="nav-item"><a class="nav-link <?= strpos($currentPath, '/relatorios') === 0 ? 'active' : '' ?>"          href="<?= $path?>/relatorios"><i class="bi bi-file-earmark-text me-1"></i>Relatório</a></li>
-                    <li class="nav-item"><a class="nav-link <?= strpos($currentPath, '/usuarios') === 0 ? 'active' : '' ?>"            href="<?= $path?>/usuarios/create"><i class="bi bi-person-badge me-1"></i>Cadastrar usuário</a></li>
+                    <li class="nav-item"><a class="nav-link <?= ($_CURRENTPATH === '/' ) ? 'active' : '' ?>" href="<?= $_URLPATH?>/"><i class="bi bi-house-door-fill me-1"></i>Início</a></li>
+                    <li class="nav-item"><a class="nav-link <?= strpos($_CURRENTPATH, '/cadastro') === 0 ? 'active' : '' ?>"            href="<?= $_URLPATH?>/cadastro"><i class="bi bi-person-plus me-1"></i>Cadastro</a></li>
+                    <li class="nav-item"><a class="nav-link <?= strpos($_CURRENTPATH, '/alunos') === 0 ? 'active' : '' ?>"              href="<?= $_URLPATH?>/alunos"><i class="bi bi-people-fill me-1"></i>Alunos</a></li>
+                    <li class="nav-item"><a class="nav-link <?= strpos($_CURRENTPATH, '/justificativas') === 0 ? 'active' : '' ?>"      href="<?= $_URLPATH?>/justificativas"><i class="bi bi-check2-square me-1"></i>Justificativas</a></li>
+                    <li class="nav-item"><a class="nav-link <?= strpos($_CURRENTPATH, '/relatorios') === 0 ? 'active' : '' ?>"          href="<?= $_URLPATH?>/relatorios"><i class="bi bi-file-earmark-text me-1"></i>Relatório</a></li>
+                    <li class="nav-item"><a class="nav-link <?= strpos($_CURRENTPATH, '/usuarios') === 0 ? 'active' : '' ?>"            href="<?= $_URLPATH?>/usuarios/create"><i class="bi bi-person-badge me-1"></i>Cadastrar usuário</a></li>
                 </ul>
 
                 <div class="d-flex align-items-center">

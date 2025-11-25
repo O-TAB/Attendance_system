@@ -9,7 +9,7 @@
             <div class="alert alert-danger"><?= $erro ?></div>
             <?php endif; ?>
 
-            <form method="POST">
+            <form method="POST" action="">
                 <div class="mb-3">
                     <label>Nome</label>
                     <input type="text" name="nome" class="form-control" required>
@@ -17,7 +17,7 @@
                 <div class="mb-3">
                     <label>Telefone (DDD + número) *</label>
                     <input type="text" name="telefone" class="form-control" required maxlength="11" minlength="11"
-                        value="<?=$userModel->Getf_HTML('telefone') ?>"
+                        value="<?= isset($telefone) ? $telefone : '' ?>"
                         pattern="[0-9]{11}" title="Digite o número com DDD (11 dígitos)">
                     <small class="text-muted">Exemplo: 11999999999 (11 dígitos)</small>
                 </div>
@@ -29,9 +29,17 @@
                     <label>Senha</label>
                     <input type="password" name="senha" class="form-control" required>
                 </div>
-                <div class="mb-3 form-check form-switch">
-                    <input class="form-check-input" type="checkbox" name="admin" id="adminSwitch" value="1">
-                    <label class="form-check-label" for="adminSwitch">Usuário Administrador</label>
+                <div class="mb-3">
+                    <label for="modalidade_id" class="form-label">Modalidade *</label>
+                    <select class="form-select" id="modalidade_id" name="modalidade_id" required>
+                        <option value="">Selecione uma modalidade</option>
+                        <option value="ADM"        >Usuário administrador</option>
+                        <option value="Responsavel">Usuário Responsavel</option>
+                        <option value="Professor"  >Professor</option> 
+                    </select>
+                    <div class="invalid-feedback">
+                        Por favor, selecione uma modalidade.
+                    </div>
                 </div>
                 <div class="d-grid">
                     <button type="submit" class="btn btn-success">Cadastrar</button>

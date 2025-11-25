@@ -9,17 +9,26 @@ use App\models\UserModel;
 
 class RegisterController extends Controller{
 
-    //@postmethod
-    public function HandleNewSdudentData(Request $request){
+    //@getmethod
+    public function Get_register_user_page(){
+        return $this->renderview('RegisterUser', 'AdmPainel');
+    }
 
-        $data = [
-            'telefone' => '94991239897'
-        ];
-        $params = [ 
-            'userModel' => new UserModel($data)
-        ];
+    public function Handle_register_user(Request $request){
 
-        return $this->renderview('RegisterUser', 'AdmPainel', $params);
+        $post = $request->getBody();
+
+        var_dump($post);
+        // $data = [
+        //     'telefone' => '94991239897'
+        // ];
+
+        // $userModel = new UserModel($data);
+        // $params = [
+        //     'telefone'=> $userModel->Getf_HTML('telefone')
+        // ];
+
+        return $this->renderview('RegisterUser', 'AdmPainel');
     }
 
 }
