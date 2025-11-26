@@ -6,6 +6,8 @@ use Core\Controller;
 use Core\Request;
 
 use App\models\UserModel;
+use App\services\UserService;
+use Exception;
 
 class RegisterController extends Controller{
 
@@ -17,18 +19,20 @@ class RegisterController extends Controller{
     public function Handle_register_user(Request $request){
 
         $post = $request->getBody();
+        $params = [];
+        
+        $userService = new UserService();
 
-        var_dump($post);
-        // $data = [
-        //     'telefone' => '94991239897'
-        // ];
-
-        // $userModel = new UserModel($data);
-        // $params = [
-        //     'telefone'=> $userModel->Getf_HTML('telefone')
-        // ];
-
-        return $this->renderview('RegisterUser', 'AdmPainel');
+        $erro = $userService->prepare_to_register($post);
+        $params['erro'] = $erro;
+        
+        if($erro === null){
+            return $this->renderview('RegisterUser', 'AdmPainel');
+        }
+        
+        $userModel = $userService->get_usermodel();
+        $params['userModel'] = $userModel;
+        return $this->renderview('RegisterUser', 'AdmPainel', $params);
     }
 
 }

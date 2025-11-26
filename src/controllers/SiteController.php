@@ -4,7 +4,6 @@ namespace App\controllers;
 
 use Core\Controller;
 use Core\Request;
-use Core\Application;
 use Core\Data;
 use App\repositories\ClassRepository;
 use App\repositories\ClassmatesRepository;
@@ -12,19 +11,15 @@ use App\repositories\ClassmatesRepository;
 
 use App\models\ClassModel;
 
-
 class SiteController extends Controller{
-    public Application $app;
 
     public function home(){
         $data = new Data();
         $diasemana = $data->getDiaSemanaAtual();
         $data = $data->getDataString();
         
-        $connection = Application::$DatabaseConnetion;
-        
-        $classmatesrepository = new ClassmatesRepository($connection);
-        $classRepository = new ClassRepository($connection);
+        $classmatesrepository = new ClassmatesRepository();
+        $classRepository = new ClassRepository();
         $turmas = $classmatesrepository->findAllBy('dia_sem', $diasemana );
         $aulas = $classRepository->findAllby(        'data_', $data      );
 
@@ -40,8 +35,7 @@ class SiteController extends Controller{
     }
 
     public function teste(){
-        $connection = Application::$DatabaseConnetion;
-        $instance = new ClassRepository($connection);
+        $instance = new ClassRepository();
         
         $classmodel = new ClassModel($instance);
         var_dump($classmodel);

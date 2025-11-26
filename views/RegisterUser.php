@@ -12,26 +12,28 @@
             <form method="POST" action="">
                 <div class="mb-3">
                     <label>Nome</label>
-                    <input type="text" name="nome" class="form-control" required>
+                    <input type="text" name="nome" class="form-control" value="<?= isset($userModel) ? $userModel->Getf_HTML('nome') : '' ?>" required>
                 </div>
                 <div class="mb-3">
                     <label>Telefone (DDD + número) *</label>
                     <input type="text" name="telefone" class="form-control" required maxlength="11" minlength="11"
-                        value="<?= isset($telefone) ? $telefone : '' ?>"
+                        value="<?= isset($userModel) ? $userModel->Getf_HTML('telefone') : '' ?>"
                         pattern="[0-9]{11}" title="Digite o número com DDD (11 dígitos)">
                     <small class="text-muted">Exemplo: 11999999999 (11 dígitos)</small>
                 </div>
                 <div class="mb-3">
                     <label>Email</label>
-                    <input type="email" name="email" class="form-control" required>
+                    <input type="email" name="email" class="form-control" value="<?= isset($userModel) ? $userModel->Getf_HTML('email') : '' ?>"
+                    required>
                 </div>
                 <div class="mb-3">
                     <label>Senha</label>
-                    <input type="password" name="senha" class="form-control" required>
+                    <input type="password" name="senha" class="form-control" value="<?= isset($userModel) ? $userModel->Getf_HTML('senha') : '' ?>"
+                    required>
                 </div>
                 <div class="mb-3">
-                    <label for="modalidade_id" class="form-label">Modalidade *</label>
-                    <select class="form-select" id="modalidade_id" name="modalidade_id" required>
+                    <label for="tipo_usuario" class="form-label">Modalidade *</label>
+                    <select class="form-select" id="tipo_usuario" name="tipo_usuario" required>
                         <option value="">Selecione uma modalidade</option>
                         <option value="ADM"        >Usuário administrador</option>
                         <option value="Responsavel">Usuário Responsavel</option>
