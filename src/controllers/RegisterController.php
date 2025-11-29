@@ -15,6 +15,12 @@ class RegisterController extends Controller{
         return $this->renderview('RegisterUser', 'AdmPainel');
     }
 
+    //@getmethod
+    public function Get_register_NewStudent_page(){
+        return $this->renderview('registerNewStudent', 'AdmPainel');
+    }
+
+    //@postmethod
     public function Handle_register_user(Request $request){
 
         $post = $request->getBody();
@@ -31,6 +37,12 @@ class RegisterController extends Controller{
         $params['userModel'] = $userService->get_usermodel();
 
         return $this->renderview('RegisterUser', 'AdmPainel', $params);
+    }
+
+    //@postmethod
+    public function Handle_register_NewStudent(Request $request){
+        
+
     }
 
 }

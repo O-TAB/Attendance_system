@@ -47,7 +47,7 @@
                     <button type="submit" class="btn btn-success">Cadastrar</button>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="login.php">Voltar ao login</a>
+                    <a href= "<?= $_URLPATH?>">Voltar ao login</a>
                 </div>
             </form>
         </div>
