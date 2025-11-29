@@ -15,15 +15,18 @@ class UserService {
     
     public $userModel;
 
-    public function prepare_to_register(array $post){
+
+    public function register(array $post): string | null {
         try{
             $this->userModel = new UserModel($post);
+            $this->userModel->set_repository(new UserRepository());
+            $this->userModel->check();
+            $this->userModel->verify();
+            $this->userModel->save();
         }catch(Exception $e){
-            return $e;
+            return $e->getMessage();
         }
-        $this->userModel->set_repository(new UserRepository());
-        $this->userModel->check();
-        $this->userModel->save();
+
         return null;
     }
 

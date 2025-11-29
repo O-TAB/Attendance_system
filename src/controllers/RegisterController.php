@@ -5,9 +5,8 @@ namespace App\controllers;
 use Core\Controller;
 use Core\Request;
 
-use App\models\UserModel;
 use App\services\UserService;
-use Exception;
+
 
 class RegisterController extends Controller{
 
@@ -23,15 +22,14 @@ class RegisterController extends Controller{
         
         $userService = new UserService();
 
-        $erro = $userService->prepare_to_register($post);
-        $params['erro'] = $erro;
+        $params['erro'] = $userService->register($post);
         
-        if($erro === null){
+        if($params['erro'] === null){
             return $this->renderview('RegisterUser', 'AdmPainel');
         }
         
-        $userModel = $userService->get_usermodel();
-        $params['userModel'] = $userModel;
+        $params['userModel'] = $userService->get_usermodel();
+
         return $this->renderview('RegisterUser', 'AdmPainel', $params);
     }
 
